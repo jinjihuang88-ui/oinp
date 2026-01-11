@@ -8,47 +8,20 @@
     <style>
         body { background-color: #f8fafc; }
         .hero-gradient { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100% ); }
-        /* 确保 SDK 容器有高度 */
-        #coze-chat-container { height: 600px; width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
     </style>
 </head>
 <body>
-    <nav class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center">
-            <span class="text-2xl font-bold text-blue-600">OINP Master</span>
-        </div>
-    </nav>
-
-    <div class="hero-gradient text-white py-12 px-4 text-center">
-        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">安省移民 OINP 智能测评</h1>
-        <p class="text-lg text-blue-100">基于最新评分标准，AI 立即生成专业评估报告</p>
+    <div class="hero-gradient text-white py-20 px-4 text-center min-h-screen flex flex-col justify-center items-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6">安省移民 OINP 智能测评</h1>
+        <p class="text-xl mb-10 text-blue-100">基于最新评分标准，AI 深度分析您的背景，生成专业评估报告。</p>
+        
+        <!-- 这个按钮直接跳转到您的官方发布链接 -->
+        <a href="这里填入您的Coze_Agent_Store链接" 
+           class="bg-white text-blue-600 px-10 py-4 rounded-full text-xl font-bold shadow-2xl hover:bg-blue-50 transition duration-300">
+            立即开始免费测评 →
+        </a>
+        
+        <p class="mt-8 text-blue-200 text-sm">无需下载，点开即用 | 隐私保护 | 官方评分标准</p>
     </div>
-
-    <div class="max-w-4xl mx-auto py-8 px-4">
-        <!-- 直接在页面中间显示聊天框，不再依赖右下角图标 -->
-        <div id="coze-chat-container"></div>
-        <p class="text-center text-gray-500 mt-4 text-sm">提示：如果上方未出现对话框，请检查 Bot 是否已在 Coze 发布。</p>
-    </div>
-
-    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js"></script>
-    <script>
-      const bot_id = '7593396900813176885';
-      const token = 'pat_k4ZL4DT65NlYZrFxoMXSzptq6J5EFUl8sVOo0hkQT5r8Wq6KGTpWG66ieqcaNKKW';
-
-      new CozeWebSDK.WebChatClient({
-        config: {
-          bot_id: bot_id,
-        },
-        componentProps: {
-          title: '安省移民 AI 测评',
-        },
-        el: document.getElementById('coze-chat-container' ), // 强制显示在页面中间
-        auth: {
-          type: 'token',
-          token: token,
-          onRefreshToken: function () { return token; }
-        }
-      });
-    </script>
 </body>
 </html>
