@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>安省移民 OINP 智能测评中心</title>
     <style>
-        /* 让对话框充满整个屏幕，看起来像原生应用 */
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; font-family: sans-serif; }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #f7f8fa; }
         #chat-container { height: 100vh; width: 100vw; }
-        .loading-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; }
     </style>
 </head>
 <body>
-    <div class="loading-text">正在加载 AI 测评系统...</div>
     <div id="chat-container"></div>
 
-    <!-- 引入 Coze SDK -->
     <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js"></script>
     <script>
       new CozeWebSDK.WebChatClient({
@@ -28,10 +24,9 @@
         el: document.getElementById('chat-container' ),
         auth: {
           type: 'token',
-          // 请确保这里的 Token 是您刚才生成的那个 pat_ 开头的长字符串
-          token: 'pat_k4ZL4DT65NlYZrFxoMXSzptq6J5EFUl8sVOo0hkQT5r8Wq6KGTpWG66ieqcaNKKW',
+          token: 'pat_uzYHMe0znAcbDg52MujCs8U8UdB9x0zxpU8KKCtZGI5k6wgl5MEFV278VGbBPKIW',
           onRefreshToken: function () {
-            return 'pat_k4ZL4DT65NlYZrFxoMXSzptq6J5EFUl8sVOo0hkQT5r8Wq6KGTpWG66ieqcaNKKW'
+            return 'pat_uzYHMe0znAcbDg52MujCs8U8UdB9x0zxpU8KKCtZGI5k6wgl5MEFV278VGbBPKIW'
           }
         }
       });
