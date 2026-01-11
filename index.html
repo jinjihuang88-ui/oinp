@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>安省移民 OINP 智能测评中心</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #f8fafc; }
-        .hero-gradient { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100% ); }
+        /* 让对话框铺满全屏 */
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+        #chat-container { height: 100vh; width: 100vw; }
     </style>
 </head>
 <body>
-    <div class="hero-gradient text-white py-20 px-4 text-center min-h-screen flex flex-col justify-center items-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-6">安省移民 OINP 智能测评</h1>
-        <p class="text-xl mb-10 text-blue-100">基于最新评分标准，AI 深度分析您的背景，生成专业评估报告。</p>
-        
-        <!-- 这个按钮直接跳转到您的官方发布链接 -->
-        <a href="https://www.coze.com/store/agent/7593396900813176885?bot_id=true" 
-           class="bg-white text-blue-600 px-10 py-4 rounded-full text-xl font-bold shadow-2xl hover:bg-blue-50 transition duration-300">
-            立即开始免费测评 →
-        </a>
-        
-        <p class="mt-8 text-blue-200 text-sm">无需下载，点开即用 | 隐私保护 | 官方评分标准</p>
-    </div>
+    <!-- AI 对话框将加载到这个容器中 -->
+    <div id="chat-container"></div>
+
+    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js"></script>
+    <script>
+      new CozeWebSDK.WebChatClient({
+        config: {
+          bot_id: '7593396900813176885',
+        },
+        componentProps: {
+          title: '安省移民 OINP 测评',
+        },
+        el: document.getElementById('chat-container' ), // 强制嵌入到页面容器
+        auth: {
+          type: 'token',
+          token: 'pat_k4ZL4DT65NlYZrFxoMXSzptq6J5EFUl8sVOo0hkQT5r8Wq6KGTpWG66ieqcaNKKW',
+          onRefreshToken: function () {
+            return 'pat_k4ZL4DT65NlYZrFxoMXSzptq6J5EFUl8sVOo0hkQT5r8Wq6KGTpWG66ieqcaNKKW'
+          }
+        }
+      });
+    </script>
 </body>
 </html>
