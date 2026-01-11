@@ -7,97 +7,46 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #f8fafc; }
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-        }
+        .hero-gradient { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100% ); }
+        /* 确保 SDK 容器有高度 */
+        #coze-chat-container { height: 600px; width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
     </style>
 </head>
 <body>
-
-    <!-- 导航栏 -->
     <nav class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-blue-600">OINP Master</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <span class="text-gray-600">加拿大安省移民 AI 测评系统</span>
-                    </div>
-                </div>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center">
+            <span class="text-2xl font-bold text-blue-600">OINP Master</span>
         </div>
     </nav>
 
-    <!-- 主视觉区 -->
-    <div class="hero-gradient text-white py-20 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
-                30秒获取您的安省移民评估报告
-            </h1>
-            <p class="text-xl mb-10 text-blue-100">
-                基于最新 OINP 评分标准，AI 深度分析您的背景，生成专业 PDF 评估报告。
-            </p>
-            <div class="bg-white p-2 rounded-lg inline-block shadow-xl">
-                <p class="text-blue-900 font-semibold px-4 py-2">
-                    👇 点击右下角蓝色图标开始测评
-                </p>
-            </div>
-        </div>
+    <div class="hero-gradient text-white py-12 px-4 text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">安省移民 OINP 智能测评</h1>
+        <p class="text-lg text-blue-100">基于最新评分标准，AI 立即生成专业评估报告</p>
     </div>
 
-    <!-- 核心优势 -->
-    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                <div class="text-blue-500 mb-4">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-2">精准算分</h3>
-                <p class="text-gray-600">同步安省移民局最新 TEER 职业分类与地区加分规则。</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                <div class="text-blue-500 mb-4">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-2">即时生成</h3>
-                <p class="text-gray-600">无需等待，输入背景信息后 AI 立即生成结构化评估报告。</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                <div class="text-blue-500 mb-4">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-2">隐私保护</h3>
-                <p class="text-gray-600">无需注册账号，点开即用，保护您的个人隐私信息。</p>
-            </div>
-        </div>
+    <div class="max-w-4xl mx-auto py-8 px-4">
+        <!-- 直接在页面中间显示聊天框，不再依赖右下角图标 -->
+        <div id="coze-chat-container"></div>
+        <p class="text-center text-gray-500 mt-4 text-sm">提示：如果上方未出现对话框，请检查 Bot 是否已在 Coze 发布。</p>
     </div>
 
-    <!-- 页脚 -->
-    <footer class="bg-gray-50 py-12 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500">
-            <p>© 2026 OINP Master AI. All rights reserved.</p>
-            <p class="mt-2 text-sm">Powered by Coze & Manus AI</p>
-        </div>
-    </footer>
-
-    <!-- Coze SDK 嵌入代码 -->
     <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js"></script>
     <script>
+      const bot_id = '7593396900813176885';
+      const token = 'pat_k4ZL4DT65NlYZrFxoMXSzptq6J5EFUl8sVOo0hkQT5r8Wq6KGTpWG66ieqcaNKKW';
+
       new CozeWebSDK.WebChatClient({
         config: {
-          bot_id: '7593396900813176885',
+          bot_id: bot_id,
         },
         componentProps: {
           title: '安省移民 AI 测评',
         },
+        el: document.getElementById('coze-chat-container' ), // 强制显示在页面中间
         auth: {
           type: 'token',
-          token: 'pat_UID: 7593408595820626945', // 这里需要替换为您真实的 Token
-          onRefreshToken: function () {
-            return 'pat_UID: 7593408595820626945' // 这里也需要替换
-          }
+          token: token,
+          onRefreshToken: function () { return token; }
         }
       });
     </script>
